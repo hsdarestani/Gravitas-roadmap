@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+<title id="title">Gravitas logo</title>
+<desc id="desc">White Gravitas symbol over a deep blue gravity field.</desc>
+<rect width="640" height="640" fill="#073b50"/>
+<g fill="none" stroke="#8ea3a7" stroke-width="1.35" opacity=".9">
+<path d="M -20 0 Q 320 60 660 0" />
+<path d="M -20 35 Q 320 98 660 35" />
+<path d="M -20 72 Q 320 138 660 72" />
+<path d="M -20 110 Q 320 179 660 110" />
+<path d="M -20 150 Q 320 222 660 150" />
+<path d="M -20 640 Q 320 580 660 640" />
+<path d="M -20 605 Q 320 542 660 605" />
+<path d="M -20 568 Q 320 502 660 568" />
+<path d="M -20 530 Q 320 461 660 530" />
+<path d="M -20 490 Q 320 418 660 490" />
+<path d="M 0 -20 Q 58 320 0 660" />
+<path d="M 34 -20 Q 95 320 34 660" />
+<path d="M 70 -20 Q 134 320 70 660" />
+<path d="M 108 -20 Q 175 320 108 660" />
+<path d="M 148 -20 Q 218 320 148 660" />
+<path d="M 640 -20 Q 582 320 640 660" />
+<path d="M 606 -20 Q 545 320 606 660" />
+<path d="M 570 -20 Q 506 320 570 660" />
+<path d="M 532 -20 Q 465 320 532 660" />
+<path d="M 492 -20 Q 422 320 492 660" />
+<path d="M 0 0 L 155 160" />
+<path d="M 36 0 L 170 140" />
+<path d="M 0 36 L 140 170" />
+<path d="M 640 0 L 485 160" />
+<path d="M 604 0 L 470 140" />
+<path d="M 640 36 L 500 170" />
+<path d="M 0 640 L 155 480" />
+<path d="M 36 640 L 170 500" />
+<path d="M 0 604 L 140 470" />
+<path d="M 640 640 L 485 480" />
+<path d="M 604 640 L 470 500" />
+<path d="M 640 604 L 500 470" />
+</g>
+<path d="M 235 211 L 211 235 L 227 272 L 233 302 L 233 337 L 230 355 L 223 379 L 211 403 L 236 428 L 248 421 L 275 411 L 319 405 L 360 410 L 384 418 L 403 428 L 428 403 L 416 379 L 409 355 L 406 337 L 406 302 L 320 302 L 320 337 L 370 337 L 378 374 L 377 378 L 357 373 L 332 370 L 296 371 L 264 378 L 261 377 L 269 332 L 268 296 L 261 262 L 265 261 L 297 268 L 331 269 L 356 266 L 384 259 L 421 242 L 404 212 L 379 223 L 355 230 L 336 233 L 303 233 L 272 227 Z" fill="#f3f0e9"/>
+</svg>
