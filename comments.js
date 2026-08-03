@@ -1,6 +1,14 @@
 (() => {
   "use strict";
 
+  if (!document.querySelector('script[data-deck-v2="true"]')) {
+    const deckScript = document.createElement("script");
+    deckScript.src = "deck-v2.js?v=3";
+    deckScript.defer = true;
+    deckScript.dataset.deckV2 = "true";
+    document.body.appendChild(deckScript);
+  }
+
   const button = document.getElementById("commentsButton");
   const panel = document.getElementById("commentsPanel");
   const closeButton = document.getElementById("commentsClose");
