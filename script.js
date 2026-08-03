@@ -10,15 +10,17 @@
     { id: "games", number: "04", title: "بازی‌ها", short: "بازی", icon: "game", description: "تجربه‌های تعاملی و امضای Gravitas" },
     { id: "community", number: "05", title: "کامیونیتی", short: "جامعه", icon: "community", description: "نقش‌ها، مشارکت و دلیل بازگشت" },
     { id: "reach", number: "06", title: "رشد و توزیع", short: "رشد", icon: "reach", description: "سیستم انتشار و رسیدن به مخاطب" },
-    { id: "research", number: "07", title: "تحقیق و یادگیری", short: "تحقیق", icon: "search", description: "نیازسنجی، بازارسنجی و آزمایش مستمر" },
-    { id: "roadmap", number: "08", title: "رودمپ شش‌ماهه", short: "اجرا", icon: "calendar", description: "فازها، خروجی‌ها و تصویر بلندمدت" }
+    { id: "revenue", number: "07", title: "مدل درآمدی", short: "درآمد", icon: "pie", description: "پروژه، حمایت، عضویت، لایسنس و محصولات علمی" },
+    { id: "research", number: "08", title: "تحقیق و یادگیری", short: "تحقیق", icon: "search", description: "نیازسنجی، بازارسنجی و آزمایش مستمر" },
+    { id: "okr", number: "09", title: "OKR و سنجه‌ها", short: "OKR", icon: "chart", description: "Objectiveها، Key Resultها، مایل‌استون‌ها و Gateهای تصمیم" },
+    { id: "roadmap", number: "10", title: "رودمپ شش‌ماهه", short: "اجرا", icon: "calendar", description: "فازها، خروجی‌ها و تصویر بلندمدت" }
   ];
 
   const overviewSlide = {
     type: "map",
     eyebrow: "نقشه‌ی سند",
-    title: "مسیر Gravitas در هشت فصل",
-    lead: "سند از تعریف هویت شروع می‌شود، از رسانه و محصول عبور می‌کند و به جامعه، رشد و برنامه‌ی اجرایی می‌رسد.",
+    title: "مسیر Gravitas در ده فصل",
+    lead: "سند از تعریف هویت شروع می‌شود، از رسانه، محصول و مدل درآمد عبور می‌کند و به تحقیق، OKR و برنامه‌ی اجرایی می‌رسد.",
     chapters: CHAPTERS
   };
 
@@ -59,7 +61,7 @@
   function assignChapters() {
     let chapterIndex = 0;
     slides.forEach((slide, index) => {
-      const match = String(slide.eyebrow || "").match(/^0?([2-8])\s*\//);
+      const match = String(slide.eyebrow || "").match(/^0?([2-9]|10)\s*\//);
       if (slide.type === "section" && match) chapterIndex = Number(match[1]) - 1;
       slide._chapter = Math.max(0, Math.min(CHAPTERS.length - 1, chapterIndex));
       slide._index = index;
@@ -89,6 +91,11 @@
     if (title.includes("AI") || title.includes("ML")) return "ai";
     if (title.includes("پرسش") || title.includes("مسئله")) return "question";
     if (title.includes("صدا") || title.includes("شخصیت")) return "voice";
+    if (title.includes("درآمد") || title.includes("پایداری مالی")) return "pie";
+    if (title.includes("OKR") || title.includes("سنجه") || title.includes("Objective")) return "chart";
+    if (title.includes("توانمندسازی") || title.includes("North Star")) return "reach";
+    if (title.includes("مایل‌استون") || title.includes("ماه")) return "calendar";
+    if (title.includes("نقطه‌ی توقف") || title.includes("Gate")) return "check";
     if (eyebrow.includes("برنامه‌ی 01")) return "story";
     if (eyebrow.includes("برنامه‌ی 02")) return "news";
     if (eyebrow.includes("برنامه‌ی 03")) return "mic";
@@ -103,7 +110,6 @@
     if (title.includes("موتورهای رشد")) return "reach";
     if (title.includes("بفهمیم")) return "search";
     if (title.includes("آزمایشگاه شناخت")) return "chart";
-    if (title.includes("ماه")) return "calendar";
     if (title.includes("چندزبانه")) return "globe";
     return CHAPTERS[slide._chapter]?.icon || "core";
   }
@@ -118,11 +124,21 @@
     if (key.includes("درگیر")) return "cursor";
     if (key.includes("مجله") || key.includes("مقاله")) return "article";
     if (key.includes("پرونده")) return "folder";
-    if (key.includes("آزمایشگاه") || key.includes("شبیه‌سازی")) return "lab";
+    if (key.includes("آزمایشگاه") || key.includes("شبیه‌سازی") || key.includes("پک")) return "lab";
     if (key.includes("خبرنامه")) return "mail";
     if (key.includes("یادگیری") || key.includes("منابع")) return "book";
-    if (key.includes("کامیونیتی") || key.includes("دیدگاه")) return "community";
-    if (key.includes("تایم‌لاین")) return "calendar";
+    if (key.includes("کامیونیتی") || key.includes("جامعه") || key.includes("عضویت") || key.includes("دیدگاه")) return "community";
+    if (key.includes("تایم‌لاین") || key.includes("مایل‌استون")) return "calendar";
+    if (key.includes("درآمد") || key.includes("مالی")) return "pie";
+    if (key.includes("پروژه") || key.includes("شرکت") || key.includes("سازمان")) return "briefcase";
+    if (key.includes("حمایت")) return "reach";
+    if (key.includes("بازی") || key.includes("لایسنس")) return "game";
+    if (key.includes("محتوا") || key.includes("O1")) return "youtube";
+    if (key.includes("O2")) return "community";
+    if (key.includes("O3")) return "pie";
+    if (key.includes("O4") || key.includes("سیستم")) return "layers";
+    if (key.includes("MEP") || key.includes("North Star")) return "reach";
+    if (key.includes("کیفیت")) return "check";
     if (key.includes("Instagram")) return "instagram";
     if (key.includes("Telegram")) return "send";
     if (key.includes("LinkedIn")) return "briefcase";
@@ -285,6 +301,9 @@
   }
 
   function buildIndex() {
+    const summaryCount = document.querySelector(".index-summary span:first-child");
+    if (summaryCount) summaryCount.textContent = `${CHAPTERS.length} فصل`;
+
     indexList.innerHTML = CHAPTERS.map((chapter, chapterIndex) => {
       const chapterSlides = slides.filter(slide => slide._chapter === chapterIndex);
       return `<section class="index-group" data-index-chapter="${chapterIndex}">
