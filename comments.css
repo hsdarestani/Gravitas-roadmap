@@ -158,6 +158,30 @@
   text-underline-offset: 3px;
 }
 
+/* Roadmap architecture extensions */
+.slide--map .slide-shell {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245,242,234,.2) transparent;
+}
+
+@media (max-width: 1100px) and (min-width: 761px) {
+  .chapter-map {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .chapter-map__item {
+    min-height: 94px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 761px) {
+  .chapter-rail { gap: 2px; }
+  .chapter-rail button { height: 40px; }
+  .chapter-rail button > span { width: 30px; height: 30px; }
+  .chapter-rail button.is-active > span { width: 36px; height: 36px; }
+}
+
 @media (max-width: 900px) {
   .comment-button {
     min-width: 44px;
