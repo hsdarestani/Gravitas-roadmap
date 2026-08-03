@@ -8,6 +8,26 @@
 
   let resizeTimer = 0;
 
+  function installLayeringPatch() {
+    if (document.querySelector('style[data-deck-v2-patch="true"]')) return;
+    const style = document.createElement("style");
+    style.dataset.deckV2Patch = "true";
+    style.textContent = `
+      .slide[data-chapter] .slide-shell > .slide-field {
+        position: absolute !important;
+        z-index: 0 !important;
+      }
+      .slide[data-chapter] .slide-shell > .slide-watermark {
+        position: absolute !important;
+        z-index: 1 !important;
+      }
+      .slide.is-scrollable .slide-shell {
+        padding-bottom: 38px;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function textWeight(slide) {
     const body = slide.querySelector(".slide-body");
     if (!body) return 0;
@@ -86,6 +106,7 @@
     document.head.appendChild(link);
   }
 
+  installLayeringPatch();
   installStylesheet();
 
   if (document.readyState === "loading") {
