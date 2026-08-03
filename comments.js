@@ -1,9 +1,86 @@
 (() => {
   "use strict";
 
+  const UI_VERSION = "20260803-6";
+
+  function loadUiV3() {
+    if (!document.querySelector('link[data-ui-v3="true"]')) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = `ui-v3.css?v=${UI_VERSION}`;
+      link.dataset.uiV3 = "true";
+      document.head.appendChild(link);
+    }
+
+    if (!document.querySelector('script[data-ui-v3="true"]')) {
+      const script = document.createElement("script");
+      script.src = `ui-v3.js?v=${UI_VERSION}`;
+      script.dataset.uiV3 = "true";
+      document.body.appendChild(script);
+    }
+  }
+
+  function navigateToMenu(replace = false) {
+    if (replace) history.replaceState(null, "", "#2");
+    else history.pushState(null, "", "#2");
+    window.dispatchEvent(new Event("hashchange"));
+  }
+
+  function upgradeControls() {
+    const actions = document.querySelector(".topbar__actions");
+    const brand = document.querySelector(".brand[data-go]");
+    const printButton = document.getElementById("printButton");
+    const indexButton = document.getElementById("indexButton");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+
+    if (brand) {
+      brand.dataset.go = "1";
+      brand.setAttribute("aria-label", "رفتن به منوی بخش‌ها");
+    }
+
+    if (actions && !document.getElementById("homeButton")) {
+      const homeButton = document.createElement("button");
+      homeButton.id = "homeButton";
+      homeButton.className = "home-button";
+      homeButton.type = "button";
+      homeButton.setAttribute("aria-label", "نمایش بخش‌های سند");
+      homeButton.innerHTML = '<span>بخش‌ها</span><svg aria-hidden="true"><use href="#i-menu"/></svg>';
+      homeButton.addEventListener("click", () => navigateToMenu(false));
+      actions.prepend(homeButton);
+    }
+
+    if (printButton) {
+      printButton.classList.remove("icon-button");
+      printButton.classList.add("pdf-button");
+      printButton.title = "چاپ یا ذخیره به‌صورت PDF";
+      printButton.innerHTML = '<span>PDF</span><svg aria-hidden="true"><use href="#i-print"/></svg>';
+    }
+
+    if (indexButton) {
+      const label = indexButton.querySelector("span");
+      if (label) label.textContent = "فهرست کامل";
+    }
+
+    if (prevButton) {
+      prevButton.innerHTML = '<svg aria-hidden="true"><use href="#i-arrow"/></svg><span>قبلی</span>';
+    }
+
+    if (nextButton) {
+      nextButton.innerHTML = '<span>بعدی</span><svg aria-hidden="true"><use href="#i-arrow"/></svg>';
+    }
+  }
+
+  loadUiV3();
+  upgradeControls();
+
+  if (!location.hash || location.hash === "#1") {
+    navigateToMenu(true);
+  }
+
   if (!document.querySelector('script[data-deck-v2="true"]')) {
     const deckScript = document.createElement("script");
-    deckScript.src = "deck-v2.js?v=3";
+    deckScript.src = "deck-v2.js?v=20260803-6";
     deckScript.defer = true;
     deckScript.dataset.deckV2 = "true";
     document.body.appendChild(deckScript);
