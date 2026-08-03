@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const UI_VERSION = "20260803-6";
+  const UI_VERSION = "20260803-8";
 
   function loadUiV3() {
     if (!document.querySelector('link[data-ui-v3="true"]')) {
@@ -18,6 +18,14 @@
       script.dataset.uiV3 = "true";
       document.body.appendChild(script);
     }
+  }
+
+  function loadResearchLinks() {
+    if (document.querySelector('script[data-research-links="true"]')) return;
+    const script = document.createElement("script");
+    script.src = `research-links.js?v=${UI_VERSION}`;
+    script.dataset.researchLinks = "true";
+    document.body.appendChild(script);
   }
 
   function navigateToMenu(replace = false) {
@@ -73,6 +81,7 @@
 
   loadUiV3();
   upgradeControls();
+  loadResearchLinks();
 
   if (!location.hash || location.hash === "#1") {
     navigateToMenu(true);
@@ -80,7 +89,7 @@
 
   if (!document.querySelector('script[data-deck-v2="true"]')) {
     const deckScript = document.createElement("script");
-    deckScript.src = "deck-v2.js?v=20260803-6";
+    deckScript.src = `deck-v2.js?v=${UI_VERSION}`;
     deckScript.defer = true;
     deckScript.dataset.deckV2 = "true";
     document.body.appendChild(deckScript);
