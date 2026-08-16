@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="fa">
+<html dir="ltr" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#073b50" name="theme-color"/>
-<meta content="نقشه‌ی راه توسعه‌ی Gravitas؛ رسانه، وب‌سایت، بازی‌های علمی و جامعه‌ای برای فهم عمیق‌تر علم." name="description"/>
+<meta content="The Gravitas development roadmap: science media, website, games, research, and community." name="description"/>
 <meta content="Gravitas — Roadmap" property="og:title"/>
-<meta content="طرح اولیه‌ی توسعه‌ی Gravitas؛ از روایت علم تا بازی، یادگیری و کامیونیتی." property="og:description"/>
+<meta content="An initial roadmap for Gravitas, from science storytelling to games, learning, research, and community." property="og:description"/>
 <meta content="website" property="og:type"/>
 <title>Gravitas — Roadmap</title>
+<script>
+(() => {
+  try {
+    const saved = localStorage.getItem("gravitas-language");
+    const lang = saved === "fa" ? "fa" : "en";
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+  } catch (_) {}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="styles.css?v=20260803-8" rel="stylesheet"/>
 <link href="comments.css?v=20260803-8" rel="stylesheet"/>
 <link href="deck-v2.css?v=20260803-8" rel="stylesheet" data-deck-v2="true"/>
+<link href="i18n.css?v=20260816-1" rel="stylesheet"/>
 </head>
 <body>
-<a class="skip-link" href="#slide-1">رفتن به محتوای سند</a>
+<a class="skip-link" href="#slide-1">Skip to document content</a>
 
 <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-core" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
@@ -74,62 +85,65 @@
 </div>
 
 <header class="topbar">
-<button aria-label="رفتن به جلد" class="brand" data-go="0" type="button">
-<span class="brand__mark"><img alt="لوگوی Gravitas" src="logo.svg"/></span>
+<button aria-label="Go to cover" class="brand" data-go="0" type="button">
+<span class="brand__mark"><img alt="Gravitas logo" src="logo.svg"/></span>
 <span class="brand__copy"><b>GRAVITAS</b><small>ROADMAP / 2026</small></span>
 </button>
 <div class="chapter-context" id="chapterContext" aria-live="polite">
 <span class="chapter-context__icon" id="chapterIcon"></span>
-<span class="chapter-context__copy"><small id="chapterNumber">01 / 10</small><b id="chapterName">بنیان پروژه</b></span>
+<span class="chapter-context__copy"><small id="chapterNumber">01 / 10</small><b id="chapterName">Foundation</b></span>
 </div>
 <div class="topbar__actions">
-<button aria-controls="commentsPanel" aria-expanded="false" class="comment-button" id="commentsButton" type="button"><span>نظرها</span><svg><use href="#i-comment"/></svg></button>
-<button aria-label="چاپ یا ذخیره به‌صورت PDF" class="icon-button" id="printButton" title="نسخه‌ی چاپی" type="button"><svg><use href="#i-print"/></svg></button>
-<button aria-controls="indexPanel" aria-expanded="false" class="index-button" id="indexButton" type="button"><span>فهرست سند</span><svg><use href="#i-menu"/></svg></button>
+<button class="language-switch" id="languageSwitch" type="button" aria-label="تغییر زبان به فارسی"><span>فارسی</span><b>FA</b></button>
+<button aria-controls="commentsPanel" aria-expanded="false" class="comment-button" id="commentsButton" type="button"><span>Comments</span><svg><use href="#i-comment"/></svg></button>
+<button aria-label="Print or save as PDF" class="icon-button" id="printButton" title="Print version" type="button"><svg><use href="#i-print"/></svg></button>
+<button aria-controls="indexPanel" aria-expanded="false" class="index-button" id="indexButton" type="button"><span>Document index</span><svg><use href="#i-menu"/></svg></button>
 </div>
 </header>
 
-<nav class="chapter-rail" id="chapterRail" aria-label="فصل‌های سند"></nav>
+<nav class="chapter-rail" id="chapterRail" aria-label="Document chapters"></nav>
 <main aria-live="polite" class="deck" id="deck"></main>
 
-<nav aria-label="کنترل اسلایدها" class="deck-nav">
-<button aria-label="اسلاید قبلی" class="nav-arrow nav-arrow--prev" id="prevButton" type="button"><svg><use href="#i-arrow"/></svg></button>
+<nav aria-label="Slide controls" class="deck-nav">
+<button aria-label="Previous slide" class="nav-arrow nav-arrow--prev" id="prevButton" type="button"><svg><use href="#i-arrow"/></svg></button>
 <div class="deck-progress"><i id="progressBar"></i><span id="progressChapter"></span></div>
 <div class="deck-count"><b id="currentNumber">01</b><span>/</span><span id="totalNumber">69</span></div>
-<button aria-label="اسلاید بعدی" class="nav-arrow" id="nextButton" type="button"><svg><use href="#i-arrow"/></svg></button>
+<button aria-label="Next slide" class="nav-arrow" id="nextButton" type="button"><svg><use href="#i-arrow"/></svg></button>
 </nav>
 
 <aside aria-hidden="true" class="index-panel" id="indexPanel">
 <div class="index-panel__head">
-<div><small>GRAVITAS / INFORMATION ARCHITECTURE</small><h2>نقشه‌ی سند</h2></div>
-<button aria-label="بستن فهرست" class="index-close" id="indexClose" type="button"><svg><use href="#i-close"/></svg></button>
+<div><small>GRAVITAS / INFORMATION ARCHITECTURE</small><h2>Document map</h2></div>
+<button aria-label="Close index" class="index-close" id="indexClose" type="button"><svg><use href="#i-close"/></svg></button>
 </div>
-<div class="index-summary"><span>۱۰ فصل</span><span>رسانه + محصول + جامعه</span><span>تحقیق + OKR + اجرا</span></div>
+<div class="index-summary"><span>10 chapters</span><span>Media + Product + Community</span><span>Research + OKR + Execution</span></div>
 <div class="index-groups" id="indexList"></div>
-<div class="index-panel__foot"><span>کلیدهای جهت‌نما برای حرکت</span><span>اسکرول و Swipe فعال است</span></div>
+<div class="index-panel__foot"><span>Use arrow keys to navigate</span><span>Scroll and swipe are enabled</span></div>
 </aside>
 
 <aside aria-hidden="true" class="comments-panel" id="commentsPanel">
 <div class="comments-panel__head">
-<div><small>GRAVITAS / DOCUMENT DISCUSSION</small><h2>نظرها و بازخوردها</h2></div>
-<button aria-label="بستن بخش نظرها" class="comments-close" id="commentsClose" type="button"><svg><use href="#i-close"/></svg></button>
+<div><small>GRAVITAS / DOCUMENT DISCUSSION</small><h2>Comments & Feedback</h2></div>
+<button aria-label="Close comments" class="comments-close" id="commentsClose" type="button"><svg><use href="#i-close"/></svg></button>
 </div>
 <div class="comments-intro">
 <span class="comments-intro__icon"><svg><use href="#i-comment"/></svg></span>
-<p>این گفت‌وگو برای کل سند است. شماره‌ی اسلاید یا نام فصل را در ابتدای کامنت بنویسید تا بازخورد دقیق‌تر و قابل پیگیری باشد. ثبت نظر با حساب GitHub انجام می‌شود.</p>
+<p>This discussion covers the full document. Start your comment with the slide number or chapter name so feedback is easier to track. Comments are posted with a GitHub account.</p>
 </div>
 <div class="comments-slot" id="utterancesSlot"></div>
-<div class="comments-fallback">اگر ابزار کامنت نمایش داده نشد، <a href="https://github.com/hsdarestani/Gravitas-roadmap/issues/new?title=Gravitas%20Roadmap%20Feedback" target="_blank" rel="noopener noreferrer">بازخورد را مستقیم در GitHub ثبت کنید</a>.</div>
+<div class="comments-fallback">If the comments widget does not appear, <a href="https://github.com/hsdarestani/Gravitas-roadmap/issues/new?title=Gravitas%20Roadmap%20Feedback" target="_blank" rel="noopener noreferrer">submit feedback directly on GitHub</a>.</div>
 </aside>
 
 <div class="panel-backdrop" id="panelBackdrop"></div>
-<noscript><div class="noscript">برای ورق‌زدن این سند، JavaScript را فعال کنید.</div></noscript>
+<noscript><div class="noscript">Enable JavaScript to navigate this document.</div></noscript>
 <script src="slides-data.js?v=20260803-8"></script>
 <script src="content-updates.js?v=20260803-8"></script>
 <script src="research-updates.js?v=20260803-8"></script>
+<script src="i18n.js?v=20260816-1"></script>
 <script src="script.js?v=20260803-8"></script>
 <script src="deck-v2.js?v=20260803-8" data-deck-v2="true"></script>
 <script src="research-links.js?v=20260803-8" data-research-links="true"></script>
 <script src="comments.js?v=20260803-8"></script>
+<script src="i18n-ui.js?v=20260816-1"></script>
 </body>
 </html>
