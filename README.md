@@ -2,7 +2,9 @@
 
 An interactive, slide-by-slide roadmap document for Gravitas.
 
-The current presentation interface is Persian. The roadmap now defines English as the primary language of Gravitas content, with additional localized editions added according to audience, topic, and production capacity.
+The presentation is bilingual. **English is the default interface and content language**, with a built-in switch to the complete Persian edition. The selected language is remembered in the browser. English uses an LTR layout and Inter; Persian switches the document to RTL and Vazirmatn.
+
+The roadmap defines English as the primary language of Gravitas content, with additional localized editions added according to audience, topic, and production capacity.
 
 ## Cloudflare Pages
 
@@ -27,6 +29,7 @@ A direct GitHub feedback link is included in the interface as a fallback.
 
 ## Controls
 
+- English / Persian language switch
 - Mouse wheel and vertical swipe
 - Arrow keys, Page Up / Page Down, Home / End
 - Previous and next controls
