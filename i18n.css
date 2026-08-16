@@ -1,0 +1,96 @@
+/* Bilingual UI additions */
+.language-switch {
+  height: 44px;
+  min-width: 82px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 13px;
+  border: 1px solid rgba(245,242,234,.18);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(2,39,54,.24);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.language-switch:hover {
+  transform: translateY(-2px);
+  border-color: rgba(245,242,234,.45);
+  background: rgba(245,242,234,.07);
+}
+.language-switch span { font-size: 11px; font-weight: 500; }
+.language-switch b {
+  min-width: 24px;
+  padding: 4px 6px;
+  border-radius: 999px;
+  color: var(--blue-deep);
+  background: var(--accent);
+  font: 700 8px/1 var(--latin);
+  letter-spacing: .06em;
+}
+
+html[dir="ltr"] body {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+}
+html[dir="ltr"] .chapter-context__copy {
+  direction: ltr;
+  text-align: left;
+}
+html[dir="ltr"] .slide-head__context span,
+html[dir="ltr"] .slide-head__context b {
+  direction: ltr;
+}
+html[dir="ltr"] .cover-content h1 {
+  text-align: left;
+}
+html[dir="ltr"] blockquote {
+  padding: 17px 0 17px 22px;
+  border-right: 0;
+  border-left: 2px solid rgba(245,242,234,.56);
+}
+html[dir="ltr"] .chapter-map__item,
+html[dir="ltr"] .index-group__head,
+html[dir="ltr"] .index-group li button {
+  text-align: left;
+}
+html[dir="ltr"] .slide-head__context,
+html[dir="ltr"] .game-tag,
+html[dir="ltr"] .brand__copy,
+html[dir="ltr"] .deck-count {
+  direction: ltr;
+}
+html[dir="ltr"] .slide-footer,
+html[dir="ltr"] .copy,
+html[dir="ltr"] .bullet-list,
+html[dir="ltr"] .question-list,
+html[dir="ltr"] .timeline-list,
+html[dir="ltr"] .case-grid,
+html[dir="ltr"] .cards {
+  text-align: left;
+}
+html[dir="ltr"] .outcome {
+  text-align: left;
+}
+html[dir="ltr"] .final-layout,
+html[dir="ltr"] .final-layout .copy p {
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .language-switch {
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+  }
+  .language-switch span { display: none; }
+  .language-switch b {
+    min-width: 0;
+    padding: 0;
+    color: var(--ink);
+    background: transparent;
+    font-size: 10px;
+  }
+  html[dir="ltr"] blockquote { padding-left: 14px; }
+}
