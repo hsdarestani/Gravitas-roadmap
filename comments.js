@@ -2,6 +2,7 @@
   "use strict";
 
   const UI_VERSION = "20260803-8";
+  const MASTER_COPY_VERSION = "20260827-1";
 
   function loadUiV3() {
     if (!document.querySelector('link[data-ui-v3="true"]')) {
@@ -25,6 +26,14 @@
     const script = document.createElement("script");
     script.src = `research-links.js?v=${UI_VERSION}`;
     script.dataset.researchLinks = "true";
+    document.body.appendChild(script);
+  }
+
+  function loadMasterCopySync() {
+    if (document.querySelector('script[data-master-copy-sync="true"]')) return;
+    const script = document.createElement("script");
+    script.src = `master-copy-sync.js?v=${MASTER_COPY_VERSION}`;
+    script.dataset.masterCopySync = "true";
     document.body.appendChild(script);
   }
 
@@ -82,6 +91,7 @@
   loadUiV3();
   upgradeControls();
   loadResearchLinks();
+  loadMasterCopySync();
 
   if (!location.hash || location.hash === "#1") {
     navigateToMenu(true);
